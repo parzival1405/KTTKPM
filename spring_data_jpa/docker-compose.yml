@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  springboot-app:
+    image: spring_data_jpa2
+#    restart: always
+    build: .
+    ports:
+      - 8081:8081
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    volumes:
+      - /home/user/Desktop/db:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: hangkhong
+      MYSQL_ROOT_PASSWORD: root
+
